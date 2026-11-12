@@ -1,0 +1,15 @@
+{
+  "name": "plagx-draft-preflight-webflow",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "sync": "sh scripts/sync-lib.sh",
+    "dev": "webflow extension serve",
+    "bundle": "webflow extension bundle"
+  },
+  "devDependencies": {
+    "@webflow/webflow-cli": "2.16.0",
+    "linkedom": "0.18.15"
+  }
+}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plagx Draft Preflight</title>
+<link rel="stylesheet" href="styles.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<main class="plagx-preflight">
+  <header class="plagx-brand">
+    <img src="pcx-icon.png" width="20" height="20" alt="">
+    <span>Check your draft before you publish.</span>
+  </header>
+
+  <fieldset class="plagx-source">
+    <legend>Check</legend>
+    <label><input type="radio" name="source" value="page" checked> This page</label>
+    <label><input type="radio" name="source" value="selection"> Selected element</label>
+    <label><input type="radio" name="source" value="paste"> Pasted text</label>
+  </fieldset>
+
+  <div id="paste-wrap" hidden>
+    <textarea id="paste" rows="6" placeholder="Paste a draft or a CMS post here"></textarea>
+  </div>
+
+  <div class="plagx-fields">
+    <label class="plagx-field"><span>Min words</span><input id="min-words" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label>
+    <label class="plagx-field"><span>Max words</span><input id="max-words" type="number" min="0" step="1" inputmode="numeric" placeholder="0"></label>
+    <label class="plagx-field plagx-field--wide"><span>Citations</span>
+      <select id="style"><option value="apa">APA</option><option value="mla">MLA</option></select></label>
+  </div>
+
+  <details class="plagx-checks">
+    <summary>Checks</summary>
+    <label><input type="checkbox" name="check" value="length" checked> Length and structure</label>
+    <label><input type="checkbox" name="check" value="references" checked> Citations and reference list</label>
+    <label><input type="checkbox" name="check" value="punctuation" checked> Punctuation</label>
+    <label><input type="checkbox" name="check" value="grammar" checked> Basic grammar</label>
+    <label><input type="checkbox" name="check" value="passive-voice"> Passive voice</label>
+  </details>
+
+  <button id="check" type="button" class="plagx-button">Check draft</button>
+  <div id="result" class="plagx-result" aria-live="polite"></div>
+
+  <footer class="plagx-footer">
+    <p>Automated suggestions only. Your text is checked inside this panel and never leaves it.</p>
+    <p>Made by Plagiarism Checker X. For full plagiarism checking and AI-text detection, visit <a href="https://plagiarismcheckerx.com/?utm_source=plagx-preflight-webflow" target="_blank" rel="noopener">Text Similarity Detector</a>.</p>
+  </footer>
+</main>
+</body>
+</html>
