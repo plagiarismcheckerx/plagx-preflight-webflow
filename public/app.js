@@ -8,6 +8,12 @@ const LEVELS = { error: 'Error', warning: 'Warning', info: 'Suggestion' };
 /** "1 warning", "2 warnings". */
 const count = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
 
+/** The level is shown as a label, so drop the "Suggestion: " prefix and capitalise what is left. */
+const plain = (msg) => {
+  const text = msg.replace(/^Suggestion: /, '');
+  return text.charAt(0).toUpperCase() + text.slice(1);
+};
+
 const $ = (id) => document.getElementById(id);
 
 function el(tag, className, text) {
@@ -52,7 +58,7 @@ function render(result) {
     const item = el('li', `plagx-issue is-${issue.level}`);
     item.append(
       el('span', 'plagx-issue__level', LEVELS[issue.level]),
-      el('span', 'plagx-issue__message', issue.message.replace(/^Suggestion: /, '')),
+      el('span', 'plagx-issue__message', plain(issue.message)),
     );
     if (issue.text) item.append(el('span', 'plagx-issue__text', issue.text.length > 80 ? `${issue.text.slice(0, 80)}…` : issue.text));
     list.append(item);

@@ -37,6 +37,16 @@ test('"1 error" uses the singular', async () => {
   assert.ok([...document.querySelectorAll('.plagx-pill')].some((p) => p.textContent === '1 error'));
 });
 
+test('suggestions start with a capital letter', async () => {
+  choose('paste');
+  $('paste').value = 'Students often cite sources (Lee, 2019) but forget the list.\nReferences\nLee, K. (2019). Planning essays.';
+  $('check').click();
+  await settle();
+  const messages = [...document.querySelectorAll('.plagx-issue__message')].map((m) => m.textContent);
+  assert.ok(messages.length > 0);
+  for (const m of messages) assert.match(m, /^[^a-z]/);
+});
+
 test('outside the Designer, page mode explains what to do', async () => {
   choose('page');
   $('check').click();
