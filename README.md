@@ -44,7 +44,11 @@ npm run bundle     # build bundle.zip for upload
 npm run sync       # copy the latest core from ../plagx-preflight/src
 ```
 
-The app is plain HTML, CSS and JavaScript modules in `public/`, with no build step. The core library in `public/lib/` is copied from [plagx-preflight](https://github.com/plagiarismcheckerx/plagx-preflight) (MIT).
+The app is plain HTML, CSS and JavaScript modules in `public/`, with no build step.
+
+### How the bundle is packaged
+
+`npm run bundle` runs `webflow extension bundle`, which zips `webflow.json` and the files in `public/` unchanged: no transpiling, minifying or source maps. Every file in the uploaded bundle is byte-identical to the file of the same name in `public/`. The app adds nothing to published sites and makes no network requests. The core library in `public/lib/` is copied from [plagx-preflight](https://github.com/plagiarismcheckerx/plagx-preflight) (MIT).
 
 ## Plagx Preflight - Free Draft & Grammar Checker
 
